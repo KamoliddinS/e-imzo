@@ -1,11 +1,18 @@
 import "./App.css";
 import Button from "./lib/components/Button";
 import Badge from "./lib/components/Badge";
+import Modal from "./lib/components/Modal/Modal";
+import { useState } from "react";
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="App">
-      <Button label="Enter" kind="primary"></Button>
-    </div>
+    <>
+      <div className="App">
+        <button onClick={() => setIsOpen(true)}>Open Modal</button>
+        {isOpen && <Modal setIsOpen={setIsOpen} />}
+      </div>
+      {console.log(isOpen)}
+    </>
   );
 }
 
