@@ -1,4 +1,4 @@
-import { EIMZOClient as client } from './e-imzo-client';
+import { EIMZOClient as client } from "./e-imzo-client";
 
 const CAPIWS = window.CAPIWS;
 
@@ -47,10 +47,10 @@ export default class EIMZO {
   }
 
   apiKeys = [
-    'localhost',
-    '96D0C1491615C82B9A54D9989779DF825B690748224C2B04F500F370D51827CE2644D8D4A82C18184D73AB8530BB8ED537269603F61DB0D03D2104ABF789970B',
-    '127.0.0.1',
-    'A7BCFA5D490B351BE0754130DF03A068F855DB4333D43921125B9CF2670EF6A40370C646B90401955E1F7BC9CDBF59CE0B2C5467D820BE189C845D0B79CFC96F',
+    "localhost",
+    "96D0C1491615C82B9A54D9989779DF825B690748224C2B04F500F370D51827CE2644D8D4A82C18184D73AB8530BB8ED537269603F61DB0D03D2104ABF789970B",
+    "127.0.0.1",
+    "A7BCFA5D490B351BE0754130DF03A068F855DB4333D43921125B9CF2670EF6A40370C646B90401955E1F7BC9CDBF59CE0B2C5467D820BE189C845D0B79CFC96F",
   ];
 
   /**
@@ -82,7 +82,7 @@ export default class EIMZO {
     return new Promise((resolve, reject) => {
       client.listAllUserKeys(
         function (cert, index) {
-          return 'cert-' + cert.serialNumber + '-' + index;
+          return "cert-" + cert.serialNumber + "-" + index;
         },
         function (index, cert) {
           return cert;
@@ -122,15 +122,15 @@ export default class EIMZO {
     return new Promise((resolve, reject) => {
       CAPIWS.callFunction(
         {
-          plugin: 'x509',
-          name: 'get_certificate_chain',
+          plugin: "x509",
+          name: "get_certificate_chain",
           arguments: [loadKeyId],
         },
         (event, data) => {
           if (data.success) {
             resolve(data.certificates);
           } else {
-            reject('Failed');
+            reject("Failed");
           }
         },
         reject
@@ -158,12 +158,12 @@ export default class EIMZO {
   async getCertInfo(cert) {
     return new Promise((resolve, reject) => {
       CAPIWS.callFunction(
-        { name: 'get_certificate_info', arguments: [cert] },
+        { name: "get_certificate_info", arguments: [cert] },
         (event, data) => {
           if (data.success) {
             resolve(data.certificate_info);
           } else {
-            reject('Failed');
+            reject("Failed");
           }
         },
         reject
@@ -182,15 +182,15 @@ export default class EIMZO {
     return new Promise((resolve, reject) => {
       CAPIWS.callFunction(
         {
-          name: 'create_pkcs7',
-          plugin: 'pkcs7',
-          arguments: [window.Base64.encode(content), loadKeyResult.id, 'no'],
+          name: "create_pkcs7",
+          plugin: "pkcs7",
+          arguments: [window.Base64.encode(content), loadKeyResult.id, "no"],
         },
         (event, data) => {
           if (data.success) {
             resolve(data);
           } else {
-            reject('Failed');
+            reject("Failed");
           }
         },
         reject
@@ -227,14 +227,14 @@ export default class EIMZO {
     return new Promise((resolve, reject) => {
       CAPIWS.callFunction(
         {
-          name: 'get_timestamp_token_request_for_signature',
+          name: "get_timestamp_token_request_for_signature",
           arguments: [signature],
         },
         function (event, data) {
           if (data.success) {
             resolve(data.timestamp_request_64);
           } else {
-            reject('Failed');
+            reject("Failed");
           }
         },
         reject
