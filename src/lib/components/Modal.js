@@ -24,10 +24,15 @@ export default function Modal() {
   };
   return (
     <>
-      <div className="modal">
-        {" "}
-        <button onClick={() => toggleModal()}>toggleModal</button>
-      </div>
+      <button onClick={() => toggleModal()}>E-imzo bilan kirish </button>
+      {isOpen ? (
+        <div className="modal" onClick={() => toggleModal()}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h1>Modal</h1>
+            <button onClick={() => toggleModal()}>close</button>
+          </div>
+        </div>
+      ) : null}
     </>
   );
 }
