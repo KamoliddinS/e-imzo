@@ -1,8 +1,9 @@
 {
-  "name": "e-imzo",
-  "version": "0.1.0",
+  "name": "e-imzo-react",
+  "version": "0.1.1",
   "private": false,
   "main": "dist/index.js",
+  "description": "Rect component for e-imzo authentication",
   "author": {
     "name": "Kamoliddin Soliev",
     "email": "kamolsf8@gmail.com"
@@ -20,7 +21,8 @@
   "keywords": [
     "react",
     "components",
-    "ui"
+    "ui",
+    "e-imzo"
   ],
   "dependencies": {
     "@babel/polyfill": "^7.12.1",

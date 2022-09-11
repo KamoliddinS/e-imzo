@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import EIMZO from "./e-imzo/Eimzo";
+import classes from "./Modal.module.css";
 
 export default function Modal() {
   const [certificates, setCertificates] = useState(null);
@@ -26,8 +27,11 @@ export default function Modal() {
     <>
       <button onClick={() => toggleModal()}>E-imzo bilan kirish </button>
       {isOpen ? (
-        <div className="modal" onClick={() => toggleModal()}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className={classes.modal} onClick={() => toggleModal()}>
+          <div
+            className={classes.modal_content}
+            onClick={(e) => e.stopPropagation()}
+          >
             <h1>Modal</h1>
             <button onClick={() => toggleModal()}>close</button>
           </div>
