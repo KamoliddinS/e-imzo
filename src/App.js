@@ -6,28 +6,9 @@ import Modal from "./lib/components/Modal";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [certificates, setCertificates] = useState(null);
-  const EIMZOClient = new EIMZO();
-
-  useEffect(() => {
-    const listAllKeys = async () => {
-      const certs = await EIMZOClient.install();
-      const data = await EIMZOClient.listAllUserKeys();
-      setCertificates(data);
-    };
-
-    listAllKeys();
-
-    console.log("certificates", certificates);
-  }, []);
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div className="App">
-        <button onClick={() => setIsOpen(true)}>Open Modal</button>
-        {isOpen && <Modal setIsOpen={setIsOpen} />}
-      </div>
-      {console.log(isOpen)}
+      <div className="App">{<Modal />}</div>
     </>
   );
 }
